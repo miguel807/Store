@@ -69,13 +69,13 @@ export default defineComponent({
     let jewelery = ref(null);
     let electronic = ref(null);
 
-    function getCategory() {
+    async function getCategory() {
       $q.loading.show({
         spinnerColor: "primary",
         backgroundColor: "white",
       });
       let path = paths.apis.getCategory;
-      api.get(path).then((response) => {
+      await api.get(path).then((response) => {
         this.response = response.data;
         $q.loading.hide();
         this.electronic = response.data[0];

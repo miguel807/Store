@@ -32,18 +32,12 @@
             style="
               padding-left: 5px;
               padding-right: 5px;
-              width: 100%;
-              background: rgb(66, 111, 241);
-              background: linear-gradient(
-                90deg,
-                rgba(66, 111, 241, 1) 32%,
-                rgba(96, 96, 226, 1) 63%,
-                rgba(10, 0, 154, 0.9921218487394958) 94%
-              );
+              margin-left: 35%;
+              width: 30%;
             "
             square
-            icon="attach_money"
-            :label="product.price"
+            color="primary"
+            :label="'$' + product.price"
           />
           <div class="row justify-around q-mb-xs">
             <q-btn-dropdown
@@ -110,10 +104,10 @@ export default defineComponent({
       router.push({ name: "home" });
       console.log("prueba");
     }
-    function getProductsByCategory() {
+    async function getProductsByCategory() {
       $q.loading.show({ spinnerColor: "primary", backgroundColor: "grey-8" });
       const path = `${paths.apis.getProductsByCategory}/${this.category}`;
-      api.get(path).then((response) => {
+      await api.get(path).then((response) => {
         this.response = response.data;
         $q.loading.hide();
         this.data = this.response;
