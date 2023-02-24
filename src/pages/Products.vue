@@ -34,6 +34,7 @@
               padding-right: 5px;
               margin-left: 35%;
               width: 30%;
+              border-radius: 5px;
             "
             square
             color="primary"
