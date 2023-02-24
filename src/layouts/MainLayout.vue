@@ -170,22 +170,9 @@
   </q-layout>
 </template>
 
-<script>
-import { computed, defineComponent, ref } from "vue";
+<script setup>
 import { useCarStore } from "stores/car";
-
-export default defineComponent({
-  name: "MainLayout",
-
-  setup() {
-    const store = useCarStore();
-    return {
-      alert: ref(false),
-      store,
-      text: ref(""),
-    };
-  },
-});
+const store = useCarStore();
 </script>
 
 <style lang="sass" scoped>

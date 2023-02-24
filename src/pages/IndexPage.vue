@@ -3,13 +3,7 @@
   <Category />
 </template>
 
-<script>
+<script setup>
 import { defineComponent } from "vue";
 import Category from "components/Category.vue";
-export default defineComponent({
-  name: "IndexPage",
-  components: {
-    Category,
-  },
-});
 </script>

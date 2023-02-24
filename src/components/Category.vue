@@ -49,58 +49,46 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup>
+import { defineComponent, onMounted, ref } from "vue";
 import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 import paths from "../config/paths";
-import { router } from "vue-router";
 import { useRouter } from "vue-router";
-export default defineComponent({
-  name: "Category-s",
-  mounted() {
-    this.getCategory();
-  },
-  setup() {
-    const router = useRouter();
-    const $q = useQuasar();
-    let men = ref(null);
-    let women = ref(null);
-    let jewelery = ref(null);
-    let electronic = ref(null);
 
-    async function getCategory() {
-      $q.loading.show({
-        spinnerColor: "primary",
-        backgroundColor: "white",
-      });
-      let path = paths.apis.getCategory;
-      await api.get(path).then((response) => {
-        this.response = response.data;
-        $q.loading.hide();
-        this.electronic = response.data[0];
-        this.jewelery = response.data[1];
-        this.men = response.data[2];
-        this.women = response.data[3];
-      });
-    }
-
-    function redirect(category) {
-      router.push({
-        name: "products",
-        params: { category: category },
-      });
-    }
-    return {
-      getCategory,
-      men,
-      women,
-      jewelery,
-      electronic,
-      redirect,
-    };
-  },
+onMounted(() => {
+  getCategory();
 });
+
+const router = useRouter();
+const $q = useQuasar();
+let men = ref(null);
+let women = ref(null);
+let jewelery = ref(null);
+let electronic = ref(null);
+
+async function getCategory() {
+  $q.loading.show({
+    spinnerColor: "primary",
+    backgroundColor: "white",
+  });
+  let path = paths.apis.getCategory;
+  await api.get(path).then((response) => {
+    response = response;
+    $q.loading.hide();
+    electronic.value = response.data[0];
+    jewelery.value = response.data[1];
+    men.value = response.data[2];
+    women.value = response.data[3];
+  });
+}
+
+function redirect(category) {
+  router.push({
+    name: "products",
+    params: { category: category },
+  });
+}
 </script>
 
 <style lang="sass" scoped>

@@ -81,49 +81,38 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup>
+import { defineComponent, defineProps, onMounted, ref } from "vue";
 import { useQuasar } from "quasar";
 import { api } from "boot/axios";
 import paths from "../config/paths";
 import { useCarStore } from "stores/car";
 import { useRouter } from "vue-router";
-export default defineComponent({
-  name: "Products-p",
-  props: {
-    category: String,
-  },
-  mounted() {
-    this.getProductsByCategory();
-  },
-  setup() {
-    const store = useCarStore();
-    const $q = useQuasar();
-    let data = ref(null);
-    let router = useRouter();
-    function Back() {
-      router.push({ name: "home" });
-      console.log("prueba");
-    }
-    async function getProductsByCategory() {
-      $q.loading.show({ spinnerColor: "primary", backgroundColor: "grey-8" });
-      const path = `${paths.apis.getProductsByCategory}/${this.category}`;
-      await api.get(path).then((response) => {
-        this.response = response.data;
-        $q.loading.hide();
-        this.data = this.response;
-      });
-    }
 
-    return {
-      store,
-      getProductsByCategory,
-      data,
-      Back,
-      alert: ref(false),
-    };
-  },
+const props = defineProps({
+  category: String,
 });
+onMounted(() => {
+  getProductsByCategory();
+});
+
+const store = useCarStore();
+const $q = useQuasar();
+let data = ref(null);
+let router = useRouter();
+function Back() {
+  router.push({ name: "home" });
+  console.log("prueba");
+}
+async function getProductsByCategory() {
+  $q.loading.show({ spinnerColor: "primary", backgroundColor: "grey-8" });
+  const path = `${paths.apis.getProductsByCategory}/${props.category}`;
+  await api.get(path).then((response) => {
+    response = response;
+    data.value = response.data;
+    $q.loading.hide();
+  });
+}
 </script>
 
 <style lang="sass" scoped>
