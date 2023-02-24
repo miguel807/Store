@@ -73,14 +73,24 @@ async function getCategory() {
     backgroundColor: "white",
   });
   let path = paths.apis.getCategory;
-  await api.get(path).then((response) => {
-    response = response;
-    $q.loading.hide();
-    electronic.value = response.data[0];
-    jewelery.value = response.data[1];
-    men.value = response.data[2];
-    women.value = response.data[3];
-  });
+  await api
+    .get(path)
+    .then((response) => {
+      response = response;
+      electronic.value = response.data[0];
+      jewelery.value = response.data[1];
+      men.value = response.data[2];
+      women.value = response.data[3];
+    })
+    .catch((reason) => {
+      return {
+        status: reason.response.status,
+        message: reason.response.data.message,
+      };
+    })
+    .finally(() => {
+      $q.loading.hide();
+    });
 }
 
 function redirect(category) {

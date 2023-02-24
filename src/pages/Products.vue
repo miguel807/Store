@@ -107,11 +107,21 @@ function Back() {
 async function getProductsByCategory() {
   $q.loading.show({ spinnerColor: "primary", backgroundColor: "grey-8" });
   const path = `${paths.apis.getProductsByCategory}/${props.category}`;
-  await api.get(path).then((response) => {
-    response = response;
-    data.value = response.data;
-    $q.loading.hide();
-  });
+  await api
+    .get(path)
+    .then((response) => {
+      response = response;
+      data.value = response.data;
+    })
+    .catch((reason) => {
+      return {
+        status: reason.response.status,
+        message: reason.response.data.message,
+      };
+    })
+    .finally(() => {
+      $q.loading.hide();
+    });
 }
 </script>
 
