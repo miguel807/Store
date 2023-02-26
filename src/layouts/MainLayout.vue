@@ -135,7 +135,7 @@
               </q-item>
               <div style="width: 100%">
                 <q-btn
-                  color="dark"
+                  color="indigo-10"
                   style="width: 100%"
                   :label="'Total : $ ' + store.getTotalPrice"
                 >
