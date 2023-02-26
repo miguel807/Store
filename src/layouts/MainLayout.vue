@@ -2,7 +2,10 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="bg-indigo-10 q-pa-sm">
       <q-toolbar>
-        <q-toolbar-title class="q-ml-xl text-7 text-white">
+        <q-toolbar-title class="q-ml-xl text-6 text-white">
+          <q-avatar size="60px">
+            <img src="../assets/logo.png" />
+          </q-avatar>
           EVERYTHING
           <q-icon color="grey-4" name="store" size="sm"
         /></q-toolbar-title>

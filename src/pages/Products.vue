@@ -1,4 +1,10 @@
 <template>
+  <div style="margin-top: 30px; margin-left: 5%">
+    <span style="font-size: 18px; color: white" class="text-uppercase">
+      >> {{ category }} :
+    </span>
+  </div>
+
   <div style="position: relative; bottom: 75px">
     <div class="row justify-start" style="column-gap: 30px; margin-left: 5%">
       <q-card class="my-card" v-for="product in data" :key="product">
