@@ -52,7 +52,7 @@ export const useCarStore = defineStore("car", {
       this.carList.push(copia);
       Notify.create({
         message: "Product added",
-        color: "indigo-14",
+        color: "blue-10",
       });
     },
 

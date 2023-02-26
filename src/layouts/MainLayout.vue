@@ -1,31 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-dark q-pa-sm">
+    <q-header elevated class="bg-indigo-10 q-pa-sm">
       <q-toolbar>
         <q-toolbar-title class="q-ml-xl text-7 text-white">
-          EVERYTHING <q-icon color="primary" name="store" size="sm"
+          EVERYTHING
+          <q-icon color="grey-4" name="store" size="sm"
         /></q-toolbar-title>
 
-        <q-input
-          dark
-          dense
-          standout
-          v-model="text"
-          placeholder="Search"
-          input-class="text-right"
-          class="q-ml-md q-mr-xl"
-          style="width: 12%"
-        >
-          <template v-slot:append>
-            <q-icon v-if="text === ''" name="search" class="q-ml-lg" />
-            <q-icon
-              v-else
-              name="clear"
-              class="cursor-pointer"
-              @click="text = ''"
-            />
-          </template>
-        </q-input>
         <div class="q-mr-lg">
           <q-btn-dropdown
             v-if="store.lenCarList"
@@ -48,17 +29,16 @@
             color="light"
             @click="alert = false"
           >
-            <q-list style="background-color: #181848">
+            <q-list style="background-color: rgb(42, 42, 42)">
               <q-item>
                 <q-item-section>
                   <q-card
                     v-for="(product, index) in store.getProducts"
                     :key="product"
                     style="
-                      box-shadow: 5px 5px 1px black;
+                      box-shadow: 2px 2px 1px rgb(1, 8, 34);
                       padding: 3px;
                       margin-bottom: 5px;
-                      background: whitesmoke;
                       position: relative;
                     "
                     class="card"
@@ -67,13 +47,15 @@
                       <q-btn
                         style="margin-left: 90%"
                         size="xs"
-                        icon="close"
                         @click="store.deleteProduct(index)"
                         flat
                         round
                         dense
                         v-close-popup
-                      />
+                      >
+                        <q-tooltip>Remove product</q-tooltip>
+                        <q-icon name="delete" color="primary"></q-icon>
+                      </q-btn>
                       <br />
                       <q-img
                         class="my-img q-ml-xs"
@@ -92,18 +74,23 @@
                           >{{ product.title }}</span
                         >
                         <span
-                          class="label bg-primary text-white q-pl-xs"
-                          style="font-size: 12px; width: 22%"
+                          class="label bg-primary text-white q-pl-xs q-pr-xs"
+                          style="font-size: 12px; width: max-content"
                           >${{ product.price }}</span
                         >
                         <div class="row q-mt-sm" style="margin-left: 10px">
                           <div>
                             <q-btn
                               padding="none"
-                              color="primary"
+                              color=""
                               @click="store.sumProduct(index)"
                             >
-                              <q-icon name="add" size="23px"></q-icon>
+                              <q-icon
+                                name="add"
+                                color="primary"
+                                size="23px"
+                              ></q-icon>
+                              <q-tooltip>Increase</q-tooltip>
                             </q-btn>
                           </div>
                           <div
@@ -120,20 +107,24 @@
                           <div>
                             <q-btn
                               padding="none"
-                              color="primary"
-                              icon="remove"
                               v-if="product.amount <= 1"
                               disable
                               @click="store.restProduct(index)"
                             >
+                              <q-icon name="remove"></q-icon>
+                              <q-tooltip>Decrease</q-tooltip>
                             </q-btn>
                             <q-btn
                               padding="none"
-                              color="primary"
                               v-else
                               @click="store.restProduct(index)"
                             >
-                              <q-icon name="remove" size="23px" />
+                              <q-tooltip>Decrease</q-tooltip>
+                              <q-icon
+                                name="remove"
+                                color="primary"
+                                size="23px"
+                              />
                             </q-btn>
                           </div>
                         </div>
@@ -153,8 +144,8 @@
             </q-list>
           </q-btn-dropdown>
           <q-badge
-            class="q-mr-xl q-mt-sm"
-            style="color: #0f0c3c; margin-right: 5.5%"
+            class="q-mr-xl q-mt-sm bg-primary"
+            style="color: white; margin-right: 5.5%"
             size="lg"
             floating
             :label="store.cantProducts"
@@ -175,8 +166,13 @@ import { useCarStore } from "stores/car";
 const store = useCarStore();
 </script>
 
-<style lang="sass" scoped>
-.card:hover
-  box-shadow: 10px 10px 10px black
-  bottom:2px
+<style lang="scss" scoped>
+.card {
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+.card:hover {
+  box-shadow: 10px 10px 10px black;
+  bottom: 2px;
+}
 </style>
