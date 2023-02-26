@@ -145,7 +145,7 @@ async function getProductsByCategory() {
   max-width: 280px;
   transition-property: all;
   transition-duration: 0.3s;
-  position: relative;
+
   box-shadow: 5px 5px 5px #0c0c32;
 }
 
@@ -159,6 +159,7 @@ async function getProductsByCategory() {
   bottom: 2px;
   cursor: pointer;
   background-color: #dfe9ee;
+  transform: translateZ(10px) scale(1.02);
 }
 
 .my-cart:hover {

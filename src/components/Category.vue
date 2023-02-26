@@ -101,27 +101,28 @@ function redirect(category) {
 }
 </script>
 
-<style lang="sass" scoped>
-.my-card
-  margin-top:10%
-  width: 100%
-  height:250px
-  max-width: 280px
-  box-shadow: 2px 2px 2px #0c0c32
-  transition-property:all
-  transition-duration:0.3s
-  position:relative
+<style lang="scss" scoped>
+.my-card {
+  margin-top: 10%;
+  width: 100%;
+  height: 250px;
+  max-width: 280px;
+  box-shadow: 2px 2px 2px #0c0c32;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+.my-img {
+  width: 100%;
+  height: 100%;
+}
+.my-card:hover {
+  box-shadow: 11px 11px 11px black;
+  bottom: 2px;
+  cursor: pointer;
+  transform: translateZ(10px) scale(1.05);
+}
 
-.my-img
-  width:100%
-  height:100%
-
-.my-card:hover
-  box-shadow: 11px 11px 11px black
-  bottom:2px
-  cursor: pointer
-
-
-.mayus
-  text-transform:uppercase
+.mayus {
+  text-transform: uppercase;
+}
 </style>
