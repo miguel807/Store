@@ -177,5 +177,6 @@ const store = useCarStore();
 .card:hover {
   box-shadow: 10px 10px 10px black;
   bottom: 2px;
+  background-color: rgb(232, 238, 243);
 }
 </style>

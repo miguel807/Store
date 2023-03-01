@@ -151,7 +151,7 @@ async function getProductsByCategory() {
   max-width: 280px;
   transition-property: all;
   transition-duration: 0.3s;
-
+  background-color: rgb(220, 220, 220);
   box-shadow: 5px 5px 5px #0c0c32;
 }
 
@@ -161,10 +161,11 @@ async function getProductsByCategory() {
   height: 250px;
 }
 .my-card:hover {
+  background-color: rgb(215, 239, 251);
   box-shadow: 6px 9px 11px rgb(1, 14, 60);
   bottom: 2px;
   cursor: pointer;
-  background-color: #dfe9ee;
+
   transform: translateZ(10px) scale(1.02);
 }
 

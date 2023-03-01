@@ -1,51 +1,56 @@
 <template>
-  <div class="row justify-evenly">
-    <q-card class="my-card" @click="redirect(electronic)">
-      <q-img class="my-img" src="../assets/tecnologia.jpg">
-        <div
-          class="absolute-bottom text-h6 mayus"
-          style="text-transform: uppercase"
-        >
-          {{ electronic }}
-          <q-icon name="send" />
-        </div>
-      </q-img>
-    </q-card>
+  <div class="col-6"></div>
+  <div class="row q-mt-lg">
+    <div class="col-3" style="margin-left: 11%">
+      <q-card class="my-card" @click="redirect(electronic)">
+        <q-img class="my-img" src="../assets/tecnologia.jpg">
+          <div
+            class="absolute-bottom text-h6 mayus letras"
+            style="text-transform: uppercase"
+          >
+            {{ electronic }}
+            <q-icon name="send" />
+          </div>
+        </q-img>
+      </q-card>
 
-    <q-card class="my-card" @click="redirect(jewelery)">
-      <q-img class="my-img" src="../assets/joyeria.jpg">
-        <div
-          class="absolute-bottom text-h6 mayus"
-          style="text-transform: uppercase"
-        >
-          {{ jewelery }}
-          <q-icon name="send" />
-        </div>
-      </q-img>
-    </q-card>
-    <q-card class="my-card" @click="redirect(men)">
-      <q-img class="my-img" src="../assets/ropaHombre.jpg">
-        <div
-          class="absolute-bottom text-h6 mayus"
-          style="text-transform: uppercase"
-        >
-          {{ men }}
-          <q-icon name="send" />
-        </div>
-      </q-img>
-    </q-card>
+      <q-card class="my-card" @click="redirect(jewelery)">
+        <q-img class="my-img" src="../assets/joyeria.jpg">
+          <div
+            class="absolute-bottom text-h6 mayus letras"
+            style="text-transform: uppercase"
+          >
+            {{ jewelery }}
+            <q-icon name="send" />
+          </div>
+        </q-img>
+      </q-card>
+    </div>
+    <div class="col-3">
+      <q-card class="my-card" @click="redirect(men)">
+        <q-img class="my-img" src="../assets/ropaHombre.jpg">
+          <div
+            class="absolute-bottom text-h6 mayus letras"
+            style="text-transform: uppercase"
+          >
+            {{ men }}
+            <q-icon name="send" />
+          </div>
+        </q-img>
+      </q-card>
 
-    <q-card class="my-card" @click="redirect(women)">
-      <q-img class="my-img" src="../assets/ropaMujer.jpg">
-        <div
-          class="absolute-bottom text-h6 mayus"
-          style="text-transform: uppercase"
-        >
-          {{ women }}
-          <q-icon name="send" />
-        </div>
-      </q-img>
-    </q-card>
+      <q-card class="my-card" @click="redirect(women)">
+        <q-img class="my-img" src="../assets/ropaMujer.jpg">
+          <div
+            class="absolute-bottom text-h6 mayus letras"
+            style="text-transform: uppercase"
+          >
+            {{ women }}
+            <q-icon name="send" />
+          </div>
+        </q-img>
+      </q-card>
+    </div>
   </div>
 </template>
 
@@ -124,5 +129,11 @@ function redirect(category) {
 
 .mayus {
   text-transform: uppercase;
+}
+.letras {
+  color: white;
+}
+.letras:hover {
+  color: rgb(186, 186, 225);
 }
 </style>
